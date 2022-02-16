@@ -41,10 +41,11 @@ class DummyCustomModel:
         self.__init_train_datasets()
 
     def __init_train_datasets(self):
-        os.system("mv /home/X_train_features.npy X_train_features.npy")
-        os.system("mv /home/y_train.npy y_train.npy")
-        self.x_train = np.load("X_train_features.npy")
-        self.y_train = np.load("y_train.npy")
+        self.x_train = np.load("/home/X_train_features.npy")
+        self.y_train = np.load("/home/y_train.npy")[:,0]
+        # convert Y to a categorical vector
+        classes = np.max(self.y_train)
+        self.y_train = tf.keras.utils.to_categorical(self.y_train - 1, classes)
 
     def __create_model(self):
         # Create a model using high-level tf.keras.* APIs
