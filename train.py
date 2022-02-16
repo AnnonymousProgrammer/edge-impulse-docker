@@ -50,7 +50,7 @@ class DummyCustomModel:
     def __create_model(self):
         # Create a model using high-level tf.keras.* APIs
         model = tf.keras.models.Sequential([
-            tf.keras.layers.Dense(units=16),
+            tf.keras.layers.Dense(units=1),
             tf.keras.layers.Dense(units=16, activation='relu'),
             tf.keras.layers.Dense(units=self.classes, activation='softmax', name='y_pred')
         ])
