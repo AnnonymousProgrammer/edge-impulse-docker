@@ -41,15 +41,17 @@ class DummyCustomModel:
         self.__init_train_datasets()
 
     def __init_train_datasets(self):
-        self.x_train = np.load("/home/X_train_features.npy")
-        self.y_train = np.load("/home/y_train.npy")[:,0]
+        os.system("mv /home/X_train_features.npy X_train_features.npy")
+        os.system("mv /home/y_train.npy y_train.npy")
+        self.x_train = np.load("X_train_features.npy")
+        self.y_train = np.load("y_train.npy")
 
     def __create_model(self):
         # Create a model using high-level tf.keras.* APIs
         model = tf.keras.models.Sequential([
             tf.keras.layers.Dense(units=1),
             tf.keras.layers.Dense(units=16, activation='relu'),
-            tf.keras.layers.Dense(units=1, name='y_pred')
+            tf.keras.layers.Dense(units=1)
         ])
         return model
 
