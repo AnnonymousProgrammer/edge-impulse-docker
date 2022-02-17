@@ -1,0 +1,12 @@
+{
+    "version": 1,
+    "config": {
+        "edgeimpulse.com": {
+            "name": "dummy",
+            "id": 9,
+            "type": "transferLearning",
+            "description": "dummy",
+            "organizationId": 1455
+        }
+    }
+}

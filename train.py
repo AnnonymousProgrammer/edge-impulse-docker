@@ -43,16 +43,13 @@ class DummyCustomModel:
     def __init_train_datasets(self):
         self.x_train = np.load("/home/X_train_features.npy")
         self.y_train = np.load("/home/y_train.npy")[:,0]
-        # convert Y to a categorical vector
-        self.classes = np.max(self.y_train)
-        self.y_train = tf.keras.utils.to_categorical(self.y_train - 1, self.classes)
 
     def __create_model(self):
         # Create a model using high-level tf.keras.* APIs
         model = tf.keras.models.Sequential([
             tf.keras.layers.Dense(units=1),
             tf.keras.layers.Dense(units=16, activation='relu'),
-            tf.keras.layers.Dense(units=self.classes, activation='softmax', name='y_pred')
+            tf.keras.layers.Dense(units=1, name='y_pred')
         ])
         return model
 
